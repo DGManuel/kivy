@@ -223,6 +223,8 @@ cdef extern from "SDL.h":
         SDL_WINDOWEVENT_FOCUS_LOST     #< Window has lost keyboard focus */
         SDL_WINDOWEVENT_CLOSE           #< The window manager requests that the
                                         # window be closed */
+        SDL_WINDOWEVENT_TAKE_FOCUS     #< window is being offered a focus (should SDL_SetWindowInputFocus() on itself or a subwindow, or ignore) (>= SDL 2.0.5) */
+        SDL_WINDOWEVENT_HIT_TEST       #< window had a hit test that wasn't SDL_HITTEST_NORMAL (>= SDL 2.0.5) *7
 
     ctypedef enum SDL_HintPriority:
         SDL_HINT_DEFAULT
@@ -453,6 +455,7 @@ cdef extern from "SDL.h":
     cdef char *SDL_HINT_ORIENTATIONS
     cdef char *SDL_HINT_VIDEO_WIN_D3DCOMPILER
     cdef char *SDL_HINT_ACCELEROMETER_AS_JOYSTICK
+    cdef char *SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH
     cdef char *SDL_HINT_ANDROID_TRAP_BACK_BUTTON
 
     cdef int SDL_QUERY               = -1
