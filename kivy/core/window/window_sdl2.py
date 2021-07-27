@@ -639,6 +639,14 @@ class WindowSDL(WindowBase):
                 stickid, buttonid = args
                 self.dispatch('on_joy_button_up', stickid, buttonid)
 
+            elif action == 'windowtakefocus':
+                Logger.debug('WindowSDL: windowtakefocus | new event captured %s' % str(event))
+                pass
+
+            elif action == 'windowhittest':
+                Logger.debug('WindowSDL: windowhittest | new event captured %s' % str(event))
+                pass
+
             elif action in ('keydown', 'keyup'):
                 mod, key, scancode, kstr = args
 
