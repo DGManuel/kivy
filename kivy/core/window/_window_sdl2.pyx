@@ -104,6 +104,7 @@ cdef class _WindowSDL2Storage:
             self.win_flags |= SDL_WINDOW_HIDDEN
 
         SDL_SetHint(SDL_HINT_ACCELEROMETER_AS_JOYSTICK, b'0')
+        SDL_SetHint(SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, b'1');
 
         SDL_SetHintWithPriority(b'SDL_ANDROID_TRAP_BACK_BUTTON', b'1',
                                 SDL_HINT_OVERRIDE)
@@ -628,6 +629,10 @@ cdef class _WindowSDL2Storage:
                 action = ('windowfocuslost', )
             elif event.window.event == SDL_WINDOWEVENT_CLOSE:
                 action = ('windowclose', )
+            elif event.window.event == SDL_WINDOWEVENT_TAKE_FOCUS:
+                action = ("windowtakefocus", )
+            elif event.window.event == SDL_WINDOWEVENT_HIT_TEST:
+                action = ("windowhittest", )
             elif event.window.event == SDL_WINDOWEVENT_MOVED:
                 action = (
                     'windowmoved',
